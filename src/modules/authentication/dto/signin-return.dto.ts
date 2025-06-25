@@ -4,5 +4,5 @@ export class SignInReturnDto {
   success: boolean;
   message: string;
   token?: string; // Optional, if you want to return a JWT token or similar
-  User?: User;
-}
+  user?: User;
+}v

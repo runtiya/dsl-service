@@ -88,7 +88,7 @@ export class AuthenticationService {
       success: true,
       message: 'User signed in successfully!',
       token: accessToken,
-      User: _user
+      user: _user
     });
   }
 
