@@ -49,7 +49,7 @@ export class AuthenticationService {
   }
 
   async signInUser(signInDto: SignInDto) {
-    const _user = await this.userModel.findOne({email: signInDto.email}).populate('profile').exec();
+    const _user = await this.userModel.findOne({email: signInDto.email}).populate('profile').lean();
 
     if(!_user) {
       throw new HttpException(
@@ -88,7 +88,7 @@ export class AuthenticationService {
       success: true,
       message: 'User signed in successfully!',
       token: accessToken,
-      user: _user.email
+      User: _user
     });
   }
 
