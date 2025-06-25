@@ -49,7 +49,7 @@ export class AuthenticationService {
   }
 
   async signInUser(signInDto: SignInDto) {
-    const _user = await this.userModel.findOne({email: signInDto.email}).populate('profile').lean();
+    const _user = await this.userModel.findOne({email: signInDto.email}).populate('profile').lean().exec();
 
     if(!_user) {
       throw new HttpException(
