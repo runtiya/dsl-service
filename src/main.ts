@@ -19,7 +19,7 @@ async function bootstrap() {
   // CORS Configuration: Only accept requests from the specified origin.
   if (configuration().server.allowed_origins) {
     app.enableCors({
-      origin: configuration().server.allowed_origins,
+      origin: configuration().server.allowed_origins.includes('ALL') ? true : configuration().server.allowed_origins,
       methods: 'GET,POST,PUT,DELETE', //Allowed HTTP Methods
       allowedHeaders: 'Content-Type, Authorization', // Allowed Headers
     }); 
