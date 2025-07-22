@@ -1,5 +1,5 @@
-import { IsMACAddress, IsNotEmpty, IsEnum } from "class-validator";
-import { DeviceStatus } from "src/customs/deviceStatus.enum";
+import { IsMACAddress, IsNotEmpty, IsEnum, IsOptional } from "class-validator";
+import { DeviceStatusEnum } from "src/customs/utils/deviceStatus.enum";
 
 export class CreateDeviceDto {
 
@@ -7,6 +7,7 @@ export class CreateDeviceDto {
     @IsMACAddress({message: "MAC Address is not valid!"})
     macAddress : string;
 
+    //To-Do: Will be converted to enum as sportif performance map
     @IsNotEmpty({message: "Device Code cannot be empty!"})
     deviceCode: string;
 
@@ -14,9 +15,13 @@ export class CreateDeviceDto {
     deviceName: string;
 
     @IsNotEmpty({message: "Status cannot be empty!"})
-    @IsEnum(DeviceStatus, {message: 'Status is not valid!'})
-    status: DeviceStatus
+    @IsEnum(DeviceStatusEnum, {message: 'Status is not valid!'})
+    status: DeviceStatusEnum
 
+    @IsOptional()
+    firmwareVersion: string;
+
+    @IsOptional()
     description : string;
      
 }
