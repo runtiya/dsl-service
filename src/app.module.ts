@@ -11,6 +11,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { DeviceModule } from "./modules/device/device.module";
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { TrainingModule } from './modules/training/training.module';
+import { TagModule } from './modules/tag/tag.module';
 
 
 const chalk = require('chalk');
@@ -29,6 +30,7 @@ const chalk = require('chalk');
     ProfileModule,
     DeviceModule,
     TrainingModule,
+    TagModule,
   ],
   controllers: [AppController],
   providers: [AppService],
