@@ -17,10 +17,17 @@ export class Tag extends Document {
     tagName: string;
 
     @Prop({
-        unique: true,
-        ref: 'Profile',
+        ref: 'Profile'
     })
     profileId: string;
 }
 
 export const TagSchema = SchemaFactory.createForClass(Tag);
+
+TagSchema.index(
+  { profileId: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { profileId: { $exists: true, $ne: null } },
+  },
+);
