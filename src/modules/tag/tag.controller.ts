@@ -16,8 +16,8 @@ export class TagController {
   }
 
   @Get()
-  findAll() {
-    return this.tagService.findAll();
+  async findAll() {
+    return await this.tagService.findAll();
   }
 
   @Get(':id')

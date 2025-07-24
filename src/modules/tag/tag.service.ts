@@ -18,8 +18,8 @@ export class TagService {
     return await this.tagModel.create(tagType);
   }
 
-  findAll() {
-    return `This action returns all tag`;
+  async findAll(): Promise<Tag[]> {
+    return await this.tagModel.find().exec();
   }
 
   findOne(id: number) {
