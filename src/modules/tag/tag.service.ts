@@ -22,8 +22,8 @@ export class TagService {
     return await this.tagModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} tag`;
+  async findOne(_id: string): Promise<Tag> {
+    return await this.tagModel.findById(_id);
   }
 
   update(id: number, updateTagDto: UpdateTagDto) {

@@ -21,8 +21,8 @@ export class TagController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tagService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.tagService.findOne(id);
   }
 
   @Patch(':id')
