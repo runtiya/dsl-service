@@ -31,7 +31,7 @@ export class TagController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.tagService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this.tagService.remove(id);
   }
 }

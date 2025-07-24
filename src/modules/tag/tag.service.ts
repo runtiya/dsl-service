@@ -30,7 +30,7 @@ export class TagService {
     return `This action updates a #${id} tag`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tag`;
+  async remove(id: string) {
+    return await this.tagModel.findByIdAndDelete(id);
   }
 }
