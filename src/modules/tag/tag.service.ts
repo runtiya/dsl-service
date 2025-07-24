@@ -26,8 +26,15 @@ export class TagService {
     return await this.tagModel.findById(_id);
   }
 
-  update(id: number, updateTagDto: UpdateTagDto) {
-    return `This action updates a #${id} tag`;
+  async update(id: string, tagType: TagType): Promise<Tag> {
+    return await this.tagModel.findByIdAndUpdate(
+      id,
+      tagType,
+      {
+        new: true, // Returns updated data
+        runValidators: true
+    }
+    );
   }
 
   async remove(id: string) {

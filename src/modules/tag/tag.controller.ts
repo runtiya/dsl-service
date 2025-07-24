@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { TagService } from './tag.service';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { UpdateTagDto } from './dto/update-tag.dto';
@@ -25,9 +25,10 @@ export class TagController {
     return await this.tagService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTagDto: UpdateTagDto) {
-    return this.tagService.update(+id, updateTagDto);
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() updateTagDto: UpdateTagDto) {
+    const tagType: TagType = tagFunction.convertTagDtoToType(updateTagDto);
+    return await this.tagService.update(id, tagType);
   }
 
   @Delete(':id')
